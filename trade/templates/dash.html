@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="nav">
+    </div>
+    <section class="dash">
+        <div class="col">
+                <h1>Welcome to dashboard</h1>
+                {% if user.is_authenticated %}
+                <form action="{% url 'stock' user.id %}" method="POST">
+                    {% csrf_token %}
+                    <label for="stocks">Choose stock:</label>
+                    <select name="stocks" aria-placeholder="----" class="inp">
+                        <option value="aapl">AAPL</option>
+                        <option value="tsla">TSLA</option>
+                        <option value="msft">MSFT</option>
+                    </select>
+                    <input type="submit" value="Add" name="Add" class="inp">
+                </form>
+        </div>
+        <div class="col">
+                <h2>Your stocks</h2>
+                {% endif %}
+                <table class="table table-hover">
+                        <tr>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Market Price</th>
+                        </tr>
+                        {% for stocks in stock %}
+                        <tr>
+                            <td>{{stocks.stock}}</td>
+                            <td>{{stocks.price}}</td>
+                            <td><a href="">Delete</a></td>
+                            <td><a href="{% url 'order' user.id user.session_token stocks.id %}">Trade</a></td>
+                        </tr>
+                        {% endfor %}
+                </table>
+        </div>
+    </section>
+
+    <script>
+
+        var socket = new WebSocket("ws://localhost:8000/ws/streamdata/");
+
+        socket.onmessage = function(e){
+            var data = JSON.parse(e.data);
+            console.log(data);
+            document.querySelector('#app').innerText = data.message;
+        }
+
+        socket.onclose = function(e){
+            console.error('Socket closed unexpectedly');
+        }
+
+        // function req(){
+        //     while (1) {
+        //         setTimeout(() => {
+        //             var message = '22';
+        //             socket.send(JSON.stringify({
+        //                 'message': message
+        //             }));
+        //         }, 1000)
+        //     }
+        // }
+        // async function call(){
+        //     await req();
+        // }
+        // call();
+        // var message = '22';
+        //     socket.send(JSON.stringify({
+        //         'message': message
+        //     }));
+    </script>
+{% endblock %}

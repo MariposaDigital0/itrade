@@ -1,0 +1,418 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+$color: (
+  primary1: #00d84a,
+  primary: #2b9c53,
+  accent: #0f7e36,
+  bg1: #cccccc,
+  bg2: #242b2e,
+  bg3: #000000,
+  bg4: #ffffff,
+  button: #e6e6e6,
+  button1: #00996b,
+  font1: #4d4d4d,
+  font2: #f2f2f2,
+  font3: #242b2e,
+  font4: #a6a6a6,
+  blu: #055fe6,
+);
+
+$fon: "Montserrat", sans-serif;
+$fon1: "Lobster", cursive;
+
+@function color($colorName) {
+  @return map-get($color, $colorName);
+}
+
+html {
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  margin: 0;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  height: 40px;
+  border-radius: 5px;
+  width: 130px;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $fon;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+nav {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  padding: 3px 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  #logo {
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 600;
+    font-family: $fon1;
+    color: color(primary1);
+    span {
+      font-size: 24px;
+      font-weight: 600;
+      color: color(primary);
+    }
+  }
+  .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    ul {
+      display: flex;
+      li {
+        margin-left: 23px;
+        a {
+          font-size: 16px;
+          color: color(font4);
+          font-weight: 400;
+          text-transform: uppercase;
+          transition: color 0.3s ease-out;
+        }
+        a:hover {
+          color: color(primary);
+          transition: color 0.2s ease-in;
+        }
+      }
+    }
+    button {
+      background: none;
+      border: 2px solid color(primary1);
+      border-radius: 5px;
+      color: color(primary1);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: 70px;
+      transition: background 0.3s ease-out;
+    }
+    button:hover {
+      border-color: color(accent);
+      background: color(accent);
+      color: color(font2);
+    }
+    i {
+      display: none;
+    }
+  }
+}
+.containr {
+  width: 100%;
+  height: 100vh;
+  background: url(../images/home.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  .h-card {
+    width: 50%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      margin-top: -20px;
+      font-family: $fon1;
+      color: color(primary1);
+      font-size: 44px;
+    }
+    p {
+      font-family: $fon1;
+      color: color(primary1);
+      margin-top: -10px;
+      font-size: 18px;
+      font-style: italic;
+    }
+    button {
+      font-size: 16px;
+      width: 200px;
+      height: 50px;
+      background: color(accent);
+      color: color(font2);
+      margin-top: 20px;
+      font-weight: 400;
+      text-transform: uppercase;
+      transition: background 0.3s ease-out;
+    }
+    button:hover {
+      background: color(primary);
+      color: color(font2);
+    }
+  }
+}
+
+.auth {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 5;
+  display: none;
+  .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: color(bg4);
+    height: 70%;
+    width: 30%;
+    border-radius: 15px;
+    #close {
+      display: flex;
+      i {
+        width: 100%;
+        color: color(font1);
+        font-size: 20px;
+      }
+    }
+    h1 {
+      color: color(primary1);
+      font-size: 30px;
+      font-weight: 800;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 50px;
+      width: 100%;
+      height: 40%;
+      input {
+        margin: 15px 0;
+        border-radius: 5px;
+        border: 1px solid color(primary1);
+        outline: none;
+        background: none;
+      }
+      .inp {
+        background: none;
+        width: 70%;
+        height: 50px;
+        padding: 0 7px;
+        font-size: 14px;
+      }
+
+      #l-btn {
+        width: 30%;
+        height: 50px;
+        cursor: pointer;
+        border: none;
+        font-size: 14px;
+        background: color(accent);
+        color: color(font2);
+        font-weight: 500;
+      }
+      #l-btn:hover {
+        background: color(primary);
+        color: color(font2);
+      }
+      #l-btn:active {
+        background: color(accent);
+      }
+    }
+    a {
+      font-size: 14px;
+      color: color(font1);
+    }
+    a:hover {
+      color: color(primary);
+    }
+  }
+}
+
+.signup {
+  height: 1000px;
+  background: color(bg2);
+  .inner {
+    border-radius: 20px;
+    width: 50%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: color(font1);
+    h1 {
+      color: color(primary1);
+    }
+    form {
+      width: 100%;
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .contain {
+        width: 70%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        .row {
+          width: 100%;
+          height: 60px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+          .col {
+            flex: 1;
+            label {
+              color: color(font4);
+            }
+            .inp {
+              color: color(font2);
+              background: none;
+              height: 40px;
+              width: 250px;
+              border-radius: 10px;
+              border: 2px solid color(accent);
+              padding-left: 20px;
+              outline: none;
+            }
+          }
+          .l-btn {
+            background: none;
+            margin-top: 20px;
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            border: 2px solid color(accent);
+            cursor: pointer;
+            font-size: 14px;
+            color: color(font4);
+            font-weight: 500;
+            transition: background 0.3s ease-out;
+          }
+          .l-btn:hover {
+            background: color(accent);
+            color: color(font2);
+          }
+          .l-btn:active {
+            background: color(accent);
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav {
+  width: 100%;
+  height: 100px;
+  background-color: color(bg4);
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  box-shadow: 1px 1px 20px color(bg1);
+}
+
+.dash {
+  color: color(accent);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  .col {
+    width: 100%;
+    height: 100%;
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 65%;
+      td,
+      th {
+        text-align: left;
+        padding: 8px;
+        a {
+          color: color(blu);
+          text-transform: uppercase;
+          font-weight: 400;
+        }
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    }
+    h1 {
+      color: color(primary1);
+      font-size: 28px;
+    }
+    .inp {
+      height: 30px;
+      width: 80px;
+      border: 2px solid color(accent);
+      background: none;
+      border-radius: 5px;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: color(font3);
+      transition: background 0.3s ease-out;
+      cursor: pointer;
+    }
+    input {
+      cursor: pointer;
+    }
+    label {
+      margin-right: 10px;
+      font-size: 12px;
+    }
+    input:hover {
+      background: color(accent);
+      color: color(font2);
+    }
+    input:active {
+      background: color(accent);
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

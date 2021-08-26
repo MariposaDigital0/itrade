@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="signup">
+        <div class="inner">
+            <h1>Signup</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="contain">
+                    <div class="row">
+                        <div class="col"><label for="fname">First Name</label></div>
+                        <div class="col"><input type="text" id="fname" name="first_name" placeholder="First Name" class="inp"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><label for="lname">Last Name</label></div>
+                        <div class="col"><input type="text" id="lname" name="last_name" placeholder="Last Name" class="inp"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><label for="uname">Username</label></div>
+                        <div class="col"><input type="text" id="uname" name="username" placeholder="Username" class="inp"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><label for="email">Email</label></div>
+                        <div class="col"><input type="email" id="email" name="email" placeholder="Email" class="inp"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><label for="pass">Password</label></div>
+                        <div class="col"><input type="password" id="pass" name="password" placeholder="Password" class="inp"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><label for="cpass">Confirm Password</label></div>
+                        <div class="col"><input type="password" id="cpass" name="confirm_pass" placeholder="Confirm Password" class="inp"></div>
+                    </div>
+                    <div class="row">
+                        <input type="submit" name="submit" placeholder="Submit" class="l-btn">
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </section>
+{% endblock %}

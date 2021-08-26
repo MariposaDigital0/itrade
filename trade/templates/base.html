@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}" id="logo">!<span>Trade</span></a>
+        {% if user.is_authenticated %}
+        <div class="menu">
+        <ul id="ul">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'dashboard' user.id user.session_token %}">Dashboard</a></li>
+            <li><a href="">Orders</a></li>
+            <li><a href="">{{ user.username }}</a></li>
+        </ul>
+        <a href="{% url 'logout' user.id %}"><button type="submit">Logout</button></a>
+        </div>
+        {% endif %}
+    </nav>
+    {% block content %}
+
+    {% endblock %}
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
